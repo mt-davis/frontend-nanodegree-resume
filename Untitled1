@@ -1,0 +1,168 @@
+var bio = {
+    "name" : "Vardaan Sharma",
+    "role" : "Web & Full Stack Developer",
+    "contacts" : {
+        "mobile" : "+91-9876-228867",
+        "email" : "gokuldh@gmail.com",
+        "github" : "gokuldh",
+        "twitter" : "@vardaan_sharma",
+        "location" : "Ludhiana, Punjab"
+    },
+    "welcomeMessage": "Hey I'm Vardaan Sharma, This is my Resume. I Would Love you to Contact Me with Project Ideas.",
+     "skills" :  ["HTML5","CSS3","JavaScript","Bootstrap","R","Django","jQuery","Python","Java","Android Development","Full Stack"],
+     "biopic" : "images/me.jpg"
+};
+var work = {
+    "jobs" : [
+      {
+        "employer": "Appicodes",
+        "title": "Lead Developer",
+        "dates": "2014-Present",
+        "location": "Ludhiana, Punjab",
+        "description": "As the Lead Developer of the Company "+"I was Incharge of Android & "+"Full Stack Development Operations"
+      }
+    ]
+};
+var education = {
+    "schools" : [
+       {
+        "name" : "Chitkara University",
+        "dates" : "2013-Present",
+        "location" : "Rajpura, Punjab",
+        "degree" : "Bachelors Of Engineering",
+        "majors" : ["Computer Science"]
+       }
+    ],
+   "onlineCourses" : [
+        {
+           "title" : "Front End Nanodegree",
+           "School" : "Udacity",
+           "date" : "Ongoing",
+           "url" : "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+        },
+        {
+           "title" : "Android Nanodegree",
+           "School" : "Udacity",
+           "date" : "Ongoing",
+           "url" : "https://www.udacity.com/course/full-stack-web-developer-nanodegree--nd004"
+        }
+   ]
+};
+
+var projects = {
+    "projects" : [
+    {
+         "title" : "Appicodes Website",
+         "dates" : "2015",
+         "description" : "This is a project I did for Appicodes.",
+         "images" : ["images/appicodes.png"],
+         "link"  : "https://github.com/gokuldh/Company-Website"
+    }
+    ]
+};
+
+
+bio.display = function()
+{
+    var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+    $("#header").prepend(formattedRole);
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    $("#header").prepend(formattedName);
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    $("#topContacts, #footerContacts").append(formattedMobile);
+    var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    $("#topContacts, #footerContacts").append(formattedEmail);
+    var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    $("#topContacts, #footerContacts").append(formattedTwitter);
+    var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+    $("#topContacts, #footerContacts").append(formattedGithub);
+    var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+    $("#topContacts, #footerContacts").append(formattedLocation);
+    var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
+    $("#header").append(formattedPic);
+    var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+    $("#header").append(formattedMessage);
+    if (bio.skills.length > 0)
+    {
+       $("#header").append(HTMLskillsStart);
+       for(var i in bio.skills){
+            var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
+            $("#skills").append(formattedSkills);
+       }
+    }
+};
+
+education.display = function()
+{
+    for(var school in education.schools)
+    {
+        $("#education").append(HTMLschoolStart);
+        var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+        var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+        $(".education-entry:last").append(formattedName + formattedDegree);
+        var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+        $(".education-entry:last").append(formattedDates);
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+        $(".education-entry:last").append(formattedLocation);
+        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+        $(".education-entry:last").append(formattedMajor);
+    }
+
+    $("#education").append(HTMLonlineClasses);
+    $("#education").append(HTMLonlineStart);
+   for(var o in education.onlineCourses)
+   {
+
+        var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[o].title);
+        var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[o].School);
+        $(".online-entry:last").append(formattedTitle + formattedSchool);
+        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[o].date);
+        $(".online-entry:last").append(formattedDates);
+        var formattedURL = HTMLonlineURL.replace(/%data%/g, education.onlineCourses[o].url);
+        $(".online-entry:last").append(formattedURL);
+   }
+};
+work.display = function()
+{
+    for(var job in work.jobs)
+    {
+         $("#workExperience").append(HTMLworkStart);
+         var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+         var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+        $(".work-entry:last").append(formattedEmployerTitle);
+        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+        $(".work-entry:last").append(formattedDates);
+        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+        $(".work-entry:last").append(formattedLocation);
+        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+        $(".work-entry:last").append(formattedDescription);
+    }
+};
+projects.display =  function() {
+    for(var proj in projects.projects){
+        $("#projects").append(HTMLprojectStart);
+        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[proj].title).replace("#", projects.projects[proj].link);
+        $(".project-entry:last").append(formattedTitle);
+        var formattedDate = HTMLprojectDates.replace("%data%", projects.projects[proj].dates);
+        $(".project-entry:last").append(formattedDate);
+        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[proj].description);
+        $(".project-entry:last").append(formattedDescription);
+
+        for(var img in projects.projects[proj].images){ //To Display a List or Array of Images Per Project If Any
+            var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[proj].images[img]);
+            $(".project-entry:last").append(formattedImage);
+
+        }
+
+
+    }
+};
+
+bio.display();
+work.display();
+education.display();
+projects.display();
+
+$("#mapDiv").append(googleMap);
