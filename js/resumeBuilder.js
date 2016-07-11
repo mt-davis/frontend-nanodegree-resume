@@ -94,6 +94,13 @@ var education = {
         "degree" : "Bachelors Of Information Technology",
         "majors" : ["Information Technology"]
        },
+       {
+        "name" : "American InterContinental University",
+        "dates" : "2008-2009",
+        "location" :"Schaumburg, Illinois",
+        "degree" : "Associate of Art in Business Administration and Information Technolog",
+        "majors" : ["Business Administration and Information Technology"]
+       },
        ],
      
     
@@ -105,7 +112,7 @@ var education = {
 		},
 		{ "school": "Coursera",
 			"title": "Johns Hopkins University The Data Scientist’s Toolbox",
-			"completed": "March 2015 2014",
+			"completed": "March 2015",
 			"url": "https://www.coursera.org/account/accomplishments/verify/CUUPTLWYS3"
 		},
 		{ "school": "Coursera",
@@ -131,50 +138,90 @@ var education = {
 	]
 };
 //displaying education infformation
-education.display = function()
-{
-		$('#education').append(HTMLschoolStart);
-		for(school in education.schools){
-			var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
-			var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-			$('.education-entry:last').append(formattedSchool + formattedDegree);
-
-			var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-			$('.education-entry:last').append(formattedDates);
-
-			var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-			$('.education-entry:last').append(formattedLocation);
-
-			for(major in education.schools[school].majors){
-				var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors[major]);
-				$('.education-entry:last').append(formattedMajor);
-			}
-			if(education.onlineCourses.length > 2) {
-			$("#education").append(HTMLonlineClasses);
-			for(i in education.onlineCourses) {				
-				$("#education").append(HTMLschoolStart);
-				var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title).replace("#", education.onlineCourses[i].url);
-				var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-				var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].completed);
-				var formattedOnlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url).replace("#", education.onlineCourses[i].url);
-				$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineSchool);
-				$(".education-entry:last").append(formattedOnlineDates);
-				$(".education-entry:last").append(formattedOnlineURL);
-			}
-			}
-		}
-}; //End of education object
+education.display = function () {
+    'use strict';
+    var formattedHtml, edu;
+    if (education.schools.length > 0 || education.onlineCourses.length > 0) {
+        // start the HTML
+        $("#education").append("<div id=\"education-foldable-content\"></div>");
+        for (edu in education.schools) {
+            if (education.schools.hasOwnProperty(edu)) {
+                $("#education-foldable-content").append(HTMLschoolStart);
+                formattedHtml = HTMLschoolName.replace("%data%", education.schools[edu].name);
+                $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].dates));
+                $(".education-entry:last").append(formattedHtml);
+                $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].location));
+                $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[edu].degree));
+                $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[edu].major));
+            }
+        }
+        // start the HTML
+        $(".education-entry:last").append(HTMLonlineClasses);
+        for (edu in education.onlineCourses) {
+            if (education.onlineCourses.hasOwnProperty(edu)) {
+                formattedHtml = HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title);
+                $(".education-entry:last").append(formattedHtml);
+                $(".education-entry:last").append(HTMLonlineSchool.replace('%data%', education.onlineCourses[edu].school));
+                $(".education-entry:last").append(HTMLonlineDates.replace('%data%', education.onlineCourses[edu].completed));
+            }
+        }
+    }
+};
 
 var projects = {
     "projects" : [
+     {
+         "title" : "Photo App Front-End in Bootstrap",
+         "datesWorked" : "2015-Present",
+         "description" : "Photo App Front-End in Bootstrap.",
+         "images" : ["images/project-2.png"],
+         "url"  : "https://github.com/mt-davis/photo-demo"
+    },
     {
          "title" : "Clinical Application",
-         "dates" : "2015",
+         "datesWorked" : "2015-Present",
          "description" : "This project was to hold the clinical information of clients.",
-         "images" : ["images/inake.jpg"],
-         "link"  : "https://github.com/mt-davis/intakelog"
+         "images" : ["images/intake.jpg"],
+         "url"  : "https://github.com/mt-davis/intakelog"
+    },
+     {
+         "title" : "Yelper",
+         "datesWorked" : "2015-Present",
+         "description" : "Yelp Like Website for Restaurant Reviews using Ruby on Rails.",
+         "images" : ["images/project-1.jpg"],
+         "url"  : "https://github.com/mt-davis/yelpdemo"
+    },
+    {
+         "title" : "Google Mapper",
+         "datesWorked" : "2016-Present",
+         "description" : "An app to map out the location of users by the address field using google maps API",
+         "images" : ["images/project-3.png"],
+         "url"  : "https://github.com/mt-davis/google-mapper"
     }
     ]
+};
+
+projects.display = function() {
+	if(projects.projects.length > 0) {
+		for(i in projects.projects) {
+			$("#projects").append(HTMLprojectStart);
+
+			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
+			var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].datesWorked);
+			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
+
+			$(".project-entry:last").append(formattedProjectTitle);
+			$(".project-entry:last").append(formattedProjectDates);
+			$(".project-entry:last").append(formattedProjectDescription);
+
+			for(img in projects.projects[i].images) {
+				var formattedProjectImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[img]);
+				$(".project-entry:last").append(formattedProjectImage);
+			}
+			
+
+		}
+	}
 };
 
 
@@ -187,3 +234,5 @@ var projects = {
 bio.display();
 education.display();
 work.display();
+projects.display();
+$("#mapDiv").append(googleMap);
