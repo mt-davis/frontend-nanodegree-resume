@@ -53,7 +53,7 @@ var work = {
         "title": "Director of IT",
         "dates": "2011-Present",
         "location": "Milford, CT",
-        "description": "Designs and implements key software solutions for business development, including the private LaaS cloud environment for three collaborating mental health organizations. Developed and deployed custom (IaaS) private cloud environment for EHR at RackSpace.com as Principal Architect. Designed and implemented a web-based clinical intake application using Ruby on Rails to track potential clients/patients on Heroku PaaS."
+        "description": "Designed and implemented key software solutions using Ruby on Rail, HTML and CSS3 for a non-profit mental health organizations that employed 160 + employees. Developed and deployed custom (IaaS) private cloud environment for EHR at RackSpace.com as Principal Architect. This saved the orginzation over $500,000 in datcenter construction and $90,000 yearly for three collaborating mental health organizations that employed 400 + employees. Designed and implemented a web-based clinical intake application using Ruby on Rails to track over 500 + clients on Heroku PaaS. Used JSON and other API’s to gather data for applications."
       },
       //second job
       {
@@ -92,14 +92,14 @@ var education = {
         "dates" : "2016-Present",
         "location" : "New Britain, CT",
         "degree" : "Bachelors Of Information Technology",
-        "majors" : ["Information Technology"]
+        "major" : ["Information Technology"]
        },
        {
         "name" : "American InterContinental University",
         "dates" : "2008-2009",
         "location" :"Schaumburg, Illinois",
         "degree" : "Associate of Art in Business Administration and Information Technolog",
-        "majors" : ["Business Administration and Information Technology"]
+        "major" : ["Business Administration and Information Technology"]
        },
        ],
      
