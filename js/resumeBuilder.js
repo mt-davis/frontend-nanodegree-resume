@@ -1,4 +1,4 @@
-var bio = {
+var bio = { //displying bio information
     "name" : "Marquese Davis",
     "role" : "Ruby on Rails and Front-End Developer",
     "contacts" : {
@@ -45,7 +45,7 @@ bio.display = function()
 };
 
 
-// work 
+// displying work information 
 var work = {
     "jobs" : [
       {
@@ -84,7 +84,7 @@ work.display = function()
         $(".work-entry:last").append(formattedDescription);
     }
 };
-//education
+//displaying education information
 var education = {
     "schools" : [
        {
@@ -137,7 +137,7 @@ var education = {
 		}
 	]
 };
-//displaying education infformation
+//displaying education information
 education.display = function () {
     'use strict';
     var formattedHtml, edu;
@@ -163,11 +163,14 @@ education.display = function () {
                 $(".education-entry:last").append(formattedHtml);
                 $(".education-entry:last").append(HTMLonlineSchool.replace('%data%', education.onlineCourses[edu].school));
                 $(".education-entry:last").append(HTMLonlineDates.replace('%data%', education.onlineCourses[edu].completed));
+                //var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[edu].url);
+                //$(".education-entry:last").append(formattedURL.replace('%data%', education.onlineCourses[edu].url));
             }
         }
     }
 };
 
+//displaying project information
 var projects = {
     "projects" : [
      {
@@ -201,6 +204,7 @@ var projects = {
     ]
 };
 
+//displaying project information
 projects.display = function() {
 	if(projects.projects.length > 0) {
 		for(i in projects.projects) {
