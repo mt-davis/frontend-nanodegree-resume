@@ -44,13 +44,110 @@ bio.display = function()
     }
 };
 
+//displaying education information
+var education = {
+    "schools" : [
+{  
+   "name":"Charter Oak State College",
+   "location":"New Britain, CT",
+   "degree":"Bachelors Of Information Technology",
+   "majors":"Information Technology",
+   "dates":"2016-Present",
+   "url":"http://www.charteroak.edu"
+},
+{  
+   "name":"American InterContinental University",
+   "location":"Schaumburg, Illinois",
+   "degree":"Associate of Art in Business Administration and Information Technolog",
+   "majors":[  
+      "Business Administration and Information Technology"
+   ],
+   "dates":"2008-2009",
+   "url":"http://www.charteroak.edu"
+},
+
+],
+"onlineCourses":[  
+{  
+   "school":"Udacity",
+   "title":"Front-End Web Developer Nanodegree",
+   "completed":"In Progress",
+   "url":"https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+},
+{  
+   "school":"Coursera",
+   "title":"Johns Hopkins University The Data Scientist’s Toolbox",
+   "completed":"March 2015",
+   "url":"https://www.coursera.org/account/accomplishments/verify/CUUPTLWYS3"
+},
+{  
+   "school":"Coursera",
+   "title":"Yonsei University Big Data, Cloud Computing, & CDN Emerging Technologies",
+   "completed":"July 2015",
+   "url":"https://www.coursera.org/account/accomplishments/verify/YEKWLFWZ5VNX"
+},
+{  
+   "school":"Coursera",
+   "title":"University of Alberta Introduction to Software Product Management",
+   "completed":"January 2016",
+   "url":"https://www.coursera.org/account/accomplishments/verify/J9FZ2LWCGUBS"
+},
+{  
+   "school":"Coursera",
+   "title":"University of Alberta Software Processes and Agile Practices",
+   "completed":"Febuary 2016",
+   "url":"https://www.coursera.org/account/accomplishments/verify/M578VRNL8U32"
+},
+{  
+   "school":"edX",
+   "title":"MIT edX Professional Certificate for Startup Success",
+   "completed":"Febuary 2016",
+   "url":"https://courses.edx.org/certificates/a2ba0430dfcf4b37a309a436b5e2382c"
+}
+	]
+};
+
+//displaying education information
+education.display = function () {
+    'use strict';
+    var formattedHtml, edu;
+    if (education.schools.length > 0 || education.onlineCourses.length > 0) {
+        // start the HTML
+        //$("#education").append("<div id=\"education-foldable-content\"></div>");
+        $("#education").append(HTMLschoolStart);
+        for (edu in education.schools) {
+            if (education.schools.hasOwnProperty(edu)) {
+                $("#education-foldable-content").append(HTMLschoolStart);
+                formattedHtml = HTMLschoolName.replace("%data%", education.schools[edu].name);
+                $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].dates));
+                $(".education-entry:last").append(formattedHtml);
+                $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].location));
+                $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[edu].degree));
+                $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[edu].majors));
+            }
+        }
+        // start the HTML
+        $(".education-entry:last").append(HTMLonlineClasses);
+        for (edu in education.onlineCourses) {
+            if (education.onlineCourses.hasOwnProperty(edu)) {
+                formattedHtml = HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title);
+                $(".education-entry:last").append(formattedHtml);
+                $(".education-entry:last").append(HTMLonlineSchool.replace('%data%', education.onlineCourses[edu].school));
+                $(".education-entry:last").append(HTMLonlineDates.replace('%data%', education.onlineCourses[edu].completed));
+                //var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[edu].url);
+                //$(".education-entry:last").append(formattedURL.replace('%data%', education.onlineCourses[edu].url));
+            }
+        }
+    }
+};
+
 
 // displying work information 
 var work = {
     "jobs" : [
       {
         "employer": "Bridges... A Community Support",
-        "title": "Director of IT",
+        "title": "Director of IT Software Developer",
         "dates": "2011-Present",
         "location": "Milford, CT",
         "description": "Designed and implemented key software solutions using Ruby on Rail, HTML and CSS3 for a non-profit mental health organizations that employed 160 + employees. Developed and deployed custom (IaaS) private cloud environment for EHR at RackSpace.com as Principal Architect. This saved the orginzation over $500,000 in datcenter construction and $90,000 yearly for three collaborating mental health organizations that employed 400 + employees. Designed and implemented a web-based clinical intake application using Ruby on Rails to track over 500 + clients on Heroku PaaS. Used JSON and other API’s to gather data for applications."
@@ -84,124 +181,47 @@ work.display = function()
         $(".work-entry:last").append(formattedDescription);
     }
 };
-//displaying education information
-var education = {
-    "schools" : [
-       {
-        "name" : "Charter Oak State College",
-        "dates" : "2016-Present",
-        "location" : "New Britain, CT",
-        "degree" : "Bachelors Of Information Technology",
-        "major" : ["Information Technology"]
-       },
-       {
-        "name" : "American InterContinental University",
-        "dates" : "2008-2009",
-        "location" :"Schaumburg, Illinois",
-        "degree" : "Associate of Art in Business Administration and Information Technolog",
-        "major" : ["Business Administration and Information Technology"]
-       },
-       ],
-     
-    
-   "onlineCourses" : [
-       { "school": "Udacity",
-			"title": "Front-End Web Developer Nanodegree",
-			"completed": "In Progress",
-			"url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
-		},
-		{ "school": "Coursera",
-			"title": "Johns Hopkins University The Data Scientist’s Toolbox",
-			"completed": "March 2015",
-			"url": "https://www.coursera.org/account/accomplishments/verify/CUUPTLWYS3"
-		},
-		{ "school": "Coursera",
-			"title": "Yonsei University Big Data, Cloud Computing, & CDN Emerging Technologies",
-			"completed": "July 2015",
-			"url": "https://www.coursera.org/account/accomplishments/verify/YEKWLFWZ5VNX"
-		},
-		{ "school": "Coursera",
-			"title": "University of Alberta Introduction to Software Product Management",
-			"completed": "January 2016",
-			"url": "https://www.coursera.org/account/accomplishments/verify/J9FZ2LWCGUBS"
-		},	
-		{ "school": "Coursera",
-			"title": "University of Alberta Software Processes and Agile Practices",
-			"completed": "Febuary 2016",
-			"url": "https://www.coursera.org/account/accomplishments/verify/M578VRNL8U32"
-		},
-		{ "school": "edX",
-			"title": "MIT edX Professional Certificate for Startup Success",
-			"completed": "Febuary 2016",
-			"url": "https://courses.edx.org/certificates/a2ba0430dfcf4b37a309a436b5e2382c"
-		}
-	]
-};
-//displaying education information
-education.display = function () {
-    'use strict';
-    var formattedHtml, edu;
-    if (education.schools.length > 0 || education.onlineCourses.length > 0) {
-        // start the HTML
-        $("#education").append("<div id=\"education-foldable-content\"></div>");
-        for (edu in education.schools) {
-            if (education.schools.hasOwnProperty(edu)) {
-                $("#education-foldable-content").append(HTMLschoolStart);
-                formattedHtml = HTMLschoolName.replace("%data%", education.schools[edu].name);
-                $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].dates));
-                $(".education-entry:last").append(formattedHtml);
-                $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].location));
-                $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[edu].degree));
-                $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[edu].major));
-            }
-        }
-        // start the HTML
-        $(".education-entry:last").append(HTMLonlineClasses);
-        for (edu in education.onlineCourses) {
-            if (education.onlineCourses.hasOwnProperty(edu)) {
-                formattedHtml = HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title);
-                $(".education-entry:last").append(formattedHtml);
-                $(".education-entry:last").append(HTMLonlineSchool.replace('%data%', education.onlineCourses[edu].school));
-                $(".education-entry:last").append(HTMLonlineDates.replace('%data%', education.onlineCourses[edu].completed));
-                //var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[edu].url);
-                //$(".education-entry:last").append(formattedURL.replace('%data%', education.onlineCourses[edu].url));
-            }
-        }
-    }
-};
 
 //displaying project information
-var projects = {
-    "projects" : [
-     {
-         "title" : "Photo App Front-End in Bootstrap",
-         "datesWorked" : "2015-Present",
-         "description" : "Photo App Front-End in Bootstrap.",
-         "images" : ["images/project-2.png"],
-         "url"  : "https://github.com/mt-davis/photo-demo"
-    },
-    {
-         "title" : "Clinical Application",
-         "datesWorked" : "2015-Present",
-         "description" : "This project was to hold the clinical information of clients.",
-         "images" : ["images/intake.jpg"],
-         "url"  : "https://github.com/mt-davis/intakelog"
-    },
-     {
-         "title" : "Yelper",
-         "datesWorked" : "2015-Present",
-         "description" : "Yelp Like Website for Restaurant Reviews using Ruby on Rails.",
-         "images" : ["images/project-1.jpg"],
-         "url"  : "https://github.com/mt-davis/yelpdemo"
-    },
-    {
-         "title" : "Google Mapper",
-         "datesWorked" : "2016-Present",
-         "description" : "An app to map out the location of users by the address field using google maps API",
-         "images" : ["images/project-3.png"],
-         "url"  : "https://github.com/mt-davis/google-mapper"
-    }
-    ]
+var projects ={  
+   "projects":[  
+      {  
+         "title":"Photo App Front-End in Bootstrap",
+         "dates":"2015-Present",
+         "description":"Photo App Front-End in Bootstrap.",
+         "images":[  
+            "images/project-2.png"
+         ],
+         "url":"https://github.com/mt-davis/photo-demo"
+      },
+      {  
+         "title":"Clinical Application",
+         "dates":"2015-Present",
+         "description":"This project was to hold the clinical information of clients.",
+         "images":[  
+            "images/intake.jpg"
+         ],
+         "url":"https://github.com/mt-davis/intakelog"
+      },
+      {  
+         "title":"Yelper",
+         "dates":"2015-Present",
+         "description":"Yelp Like Website for Restaurant Reviews using Ruby on Rails.",
+         "images":[  
+            "images/project-1.jpg"
+         ],
+         "url":"https://github.com/mt-davis/yelpdemo"
+      },
+      {  
+         "title":"Google Mapper",
+         "dates":"2016-Present",
+         "description":"An app to map out the location of users by the address field using google maps API",
+         "images":[  
+            "images/project-3.png"
+         ],
+         "url":"https://github.com/mt-davis/google-mapper"
+      }
+   ]
 };
 
 //displaying project information
@@ -211,7 +231,7 @@ projects.display = function() {
 			$("#projects").append(HTMLprojectStart);
 
 			var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title).replace("#", projects.projects[i].url);
-			var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].datesWorked);
+			var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[i].dates);
 			var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[i].description);
 
 			$(".project-entry:last").append(formattedProjectTitle);
