@@ -46,8 +46,8 @@ bio.display = function()
 
 //displaying education information
 var education = {
-    "schools" : [
-{  
+   "schools" : [  
+{       
    "name":"Charter Oak State College",
    "location":"New Britain, CT",
    "degree":"Bachelors Of Information Technology",
@@ -55,93 +55,81 @@ var education = {
    "dates":"2016-Present",
    "url":"http://www.charteroak.edu"
 },
-{  
+{
    "name":"American InterContinental University",
    "location":"Schaumburg, Illinois",
    "degree":"Associate of Art in Business Administration and Information Technolog",
-   "majors":[  
-      "Business Administration and Information Technology"
-   ],
+   "majors":"Business Administration and Information Technology",
    "dates":"2008-2009",
-   "url":"http://www.charteroak.edu"
-},
+   "url":"http://www.aiuniv.edu/"
+}],
 
-],
+
 "onlineCourses":[  
 {  
-   "school":"Udacity",
+   "schools":"Udacity",
    "title":"Front-End Web Developer Nanodegree",
-   "completed":"In Progress",
+   "dates":"In Progress",
    "url":"https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
 },
 {  
-   "school":"Coursera",
+   "schools":"Coursera",
    "title":"Johns Hopkins University The Data Scientist’s Toolbox",
-   "completed":"March 2015",
+   "dates":"March 2015",
    "url":"https://www.coursera.org/account/accomplishments/verify/CUUPTLWYS3"
 },
 {  
-   "school":"Coursera",
+   "schools":"Coursera",
    "title":"Yonsei University Big Data, Cloud Computing, & CDN Emerging Technologies",
-   "completed":"July 2015",
+   "dates":"July 2015",
    "url":"https://www.coursera.org/account/accomplishments/verify/YEKWLFWZ5VNX"
 },
 {  
-   "school":"Coursera",
+   "schools":"Coursera",
    "title":"University of Alberta Introduction to Software Product Management",
-   "completed":"January 2016",
+   "dates":"January 2016",
    "url":"https://www.coursera.org/account/accomplishments/verify/J9FZ2LWCGUBS"
 },
 {  
-   "school":"Coursera",
+   "schools":"Coursera",
    "title":"University of Alberta Software Processes and Agile Practices",
-   "completed":"Febuary 2016",
+   "dates":"Febuary 2016",
    "url":"https://www.coursera.org/account/accomplishments/verify/M578VRNL8U32"
 },
 {  
-   "school":"edX",
+   "schools":"edX",
    "title":"MIT edX Professional Certificate for Startup Success",
-   "completed":"Febuary 2016",
+   "dates":"Febuary 2016",
    "url":"https://courses.edx.org/certificates/a2ba0430dfcf4b37a309a436b5e2382c"
 }
 	]
 };
 
 //displaying education information
-education.display = function () {
-    'use strict';
-    var formattedHtml, edu;
-    if (education.schools.length > 0 || education.onlineCourses.length > 0) {
-        // start the HTML
-        //$("#education").append("<div id=\"education-foldable-content\"></div>");
+education.display = function() {
+    for (var i = 0; i < education.schools.length; i++) {
         $("#education").append(HTMLschoolStart);
-        for (edu in education.schools) {
-            if (education.schools.hasOwnProperty(edu)) {
-                $("#education-foldable-content").append(HTMLschoolStart);
-                formattedHtml = HTMLschoolName.replace("%data%", education.schools[edu].name);
-                $(".education-entry:last").append(HTMLschoolDates.replace("%data%", education.schools[edu].dates));
-                $(".education-entry:last").append(formattedHtml);
-                $(".education-entry:last").append(HTMLschoolLocation.replace("%data%", education.schools[edu].location));
-                $(".education-entry:last").append(HTMLschoolDegree.replace("%data%", education.schools[edu].degree));
-                $(".education-entry:last").append(HTMLschoolMajor.replace("%data%", education.schools[edu].majors));
-            }
-        }
-        // start the HTML
-        $(".education-entry:last").append(HTMLonlineClasses);
-        for (edu in education.onlineCourses) {
-            if (education.onlineCourses.hasOwnProperty(edu)) {
-                formattedHtml = HTMLonlineTitle.replace("%data%", education.onlineCourses[edu].title);
-                $(".education-entry:last").append(formattedHtml);
-                $(".education-entry:last").append(HTMLonlineSchool.replace('%data%', education.onlineCourses[edu].school));
-                $(".education-entry:last").append(HTMLonlineDates.replace('%data%', education.onlineCourses[edu].completed));
-                //var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[edu].url);
-                //$(".education-entry:last").append(formattedURL.replace('%data%', education.onlineCourses[edu].url));
-            }
-        }
+        var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
+        var formattedNameLink = formattedName.replace("#", education.schools[i].url);
+        var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+        var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
+        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
+        var educationSchools = formattedNameLink + formattedDegree + formattedDates + formattedLocation + formattedMajor;
+        $(".education-entry:last").append(educationSchools);
+    }
+    $(".education-entry:last").append(HTMLonlineClasses);
+    for (var i = 0; i < education.onlineCourses.length; i++) {
+        var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
+        var formattedTitleLink = formattedTitle.replace("#", education.onlineCourses[i].url);
+        var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
+        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
+        var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
+        var formattedURLLink = formattedURL.replace("#", education.onlineCourses[i].url);
+        var educationOnline = formattedTitleLink + formattedSchool + formattedDates + formattedURLLink;
+        $(".education-entry:last").append(educationOnline);
     }
 };
-
-
 // displying work information 
 var work = {
     "jobs" : [
@@ -166,7 +154,8 @@ var work = {
 //displaying employment information
 work.display = function()
 {
-    for(var job in work.jobs) {
+    for(var job in work.jobs){
+    //for (var i = 0; i < work.jobs.length; i++){
          $("#workExperience").append(HTMLworkStart);
          var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
          var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
