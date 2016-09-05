@@ -75,32 +75,36 @@ var education = {
 {  
    "schools":"Coursera",
    "title":"Johns Hopkins University The Data Scientist’s Toolbox",
-   "dates":"March 2015",
-   "url":"https://www.coursera.org/account/accomplishments/verify/CUUPTLWYS3"
+   "url":"https://www.coursera.org/account/accomplishments/verify/CUUPTLWYS3",
+   "dates":"March 2015"
+   
 },
 {  
    "schools":"Coursera",
    "title":"Yonsei University Big Data, Cloud Computing, & CDN Emerging Technologies",
-   "dates":"July 2015",
-   "url":"https://www.coursera.org/account/accomplishments/verify/YEKWLFWZ5VNX"
+   "url":"https://www.coursera.org/account/accomplishments/verify/YEKWLFWZ5VNX",
+   "dates":"July 2015"
+   
 },
 {  
    "schools":"Coursera",
    "title":"University of Alberta Introduction to Software Product Management",
-   "dates":"January 2016",
-   "url":"https://www.coursera.org/account/accomplishments/verify/J9FZ2LWCGUBS"
+   "url":"https://www.coursera.org/account/accomplishments/verify/J9FZ2LWCGUBS",
+   "dates":"January 2016"
+   
 },
 {  
    "schools":"Coursera",
    "title":"University of Alberta Software Processes and Agile Practices",
-   "dates":"Febuary 2016",
-   "url":"https://www.coursera.org/account/accomplishments/verify/M578VRNL8U32"
+   "url":"https://www.coursera.org/account/accomplishments/verify/M578VRNL8U32",
+   "dates":"Febuary 2016"
+   
 },
 {  
    "schools":"edX",
    "title":"MIT edX Professional Certificate for Startup Success",
-   "dates":"Febuary 2016",
-   "url":"https://courses.edx.org/certificates/a2ba0430dfcf4b37a309a436b5e2382c"
+   "url":"https://courses.edx.org/certificates/a2ba0430dfcf4b37a309a436b5e2382c",
+   "dates":"Febuary 2016"
 }
 	]
 };
@@ -110,8 +114,8 @@ education.display = function() {
     for (var i = 0; i < education.schools.length; i++) {
         $("#education").append(HTMLschoolStart);
         var formattedName = HTMLschoolName.replace("%data%", education.schools[i].name);
-        var formattedNameLink = formattedName.replace("#", education.schools[i].url);
         var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[i].degree);
+        var formattedNameLink = formattedName.replace("#", education.schools[i].url);
         var formattedDates = HTMLschoolDates.replace("%data%", education.schools[i].dates);
         var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[i].location);
         var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[i].majors);
@@ -121,11 +125,11 @@ education.display = function() {
     $(".education-entry:last").append(HTMLonlineClasses);
     for (var i = 0; i < education.onlineCourses.length; i++) {
         var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[i].title);
+        var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].schools);
         var formattedTitleLink = formattedTitle.replace("#", education.onlineCourses[i].url);
-        var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[i].school);
-        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
         var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[i].url);
         var formattedURLLink = formattedURL.replace("#", education.onlineCourses[i].url);
+        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[i].dates);
         var educationOnline = formattedTitleLink + formattedSchool + formattedDates + formattedURLLink;
         $(".education-entry:last").append(educationOnline);
     }
