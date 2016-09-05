@@ -155,7 +155,6 @@ var work = {
 work.display = function()
 {
     for(var job in work.jobs){
-    //for (var i = 0; i < work.jobs.length; i++){
          $("#workExperience").append(HTMLworkStart);
          var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
          var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -236,13 +235,6 @@ projects.display = function() {
 		}
 	}
 };
-
-
-//online.display = function ()
-//{
-// $'education').append.(HTMLonlineClasses);
-//};
-
 
 bio.display();
 education.display();

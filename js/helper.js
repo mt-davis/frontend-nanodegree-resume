@@ -102,8 +102,8 @@ var map;    // declares a global map variable
 /*
 Start here! initializeMap() is called when page is loaded.
 */
-//function initializeMap() {
-window.initializeMap = function(){
+function initializeMap() {
+//window.initializeMap = function(){
 
 
   var locations;
