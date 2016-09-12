@@ -51,14 +51,14 @@ var education = {
    "name":"Charter Oak State College",
    "location":"New Britain, CT",
    "degree":"Bachelors Of Information Technology",
-   "majors":"Information Technology",
+   "majors": ["Information Technology"],
    "dates":"2016-Present",
    "url":"http://www.charteroak.edu"
 },
 {
    "name":"American InterContinental University",
    "location":"Schaumburg, Illinois",
-   "degree":"Associate of Art in Business Administration and Information Technolog",
+   "degree":["Associate of Art in Business Administration and Information Technolog"],
    "majors":"Business Administration and Information Technology",
    "dates":"2008-2009",
    "url":"http://www.aiuniv.edu/"
