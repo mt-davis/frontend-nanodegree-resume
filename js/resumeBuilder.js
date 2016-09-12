@@ -67,41 +67,41 @@ var education = {
 
 "onlineCourses":[  
 {  
-   "schools":"Udacity",
+   "school":"Udacity",
    "title":"Front-End Web Developer Nanodegree",
    "dates":"In Progress",
    "url":"https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
 },
 {  
-   "schools":"Coursera",
+   "school":"Coursera",
    "title":"Johns Hopkins University The Data Scientist’s Toolbox",
    "url":"https://www.coursera.org/account/accomplishments/verify/CUUPTLWYS3",
    "dates":"March 2015"
    
 },
 {  
-   "schools":"Coursera",
+   "school":"Coursera",
    "title":"Yonsei University Big Data, Cloud Computing, & CDN Emerging Technologies",
    "url":"https://www.coursera.org/account/accomplishments/verify/YEKWLFWZ5VNX",
    "dates":"July 2015"
    
 },
 {  
-   "schools":"Coursera",
+   "school":"Coursera",
    "title":"University of Alberta Introduction to Software Product Management",
    "url":"https://www.coursera.org/account/accomplishments/verify/J9FZ2LWCGUBS",
    "dates":"January 2016"
    
 },
 {  
-   "schools":"Coursera",
+   "school":"Coursera",
    "title":"University of Alberta Software Processes and Agile Practices",
    "url":"https://www.coursera.org/account/accomplishments/verify/M578VRNL8U32",
    "dates":"Febuary 2016"
    
 },
 {  
-   "schools":"edX",
+   "school":"edX",
    "title":"MIT edX Professional Certificate for Startup Success",
    "url":"https://courses.edx.org/certificates/a2ba0430dfcf4b37a309a436b5e2382c",
    "dates":"Febuary 2016"
